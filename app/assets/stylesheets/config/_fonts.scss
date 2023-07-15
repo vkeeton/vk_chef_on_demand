@@ -1,10 +1,10 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300&family=Lora:ital@1&family=Montserrat:wght@700&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
-
+$body-font: 'Hind Madurai', sans-serif; //Link is bold version of body font
+$h1-font: 'Montserrat', sans-serif;
+$h2-font: 'Lora', serif;
 // To use a font file (.woff) uncomment following lines
 // @font-face {
 //   font-family: "Font Name";
