@@ -1,2 +1,25 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1>Restaurant quality meals in the comfort of your home</h1>
+    <p>Book a personal chef today</p>
+    <a class="btn btn-flat" href="#">Book Now</a>
+  </div>
+</div>
+
+<% cuisines = ["Japanese", "Chinese", "French", "American", "Italian", "Korean"] %>
+
+<div class="container">
+  <div class="row justify-content-center">
+  <% cuisines.each do |cuisine| %>
+    <div class="col-6">
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= cuisine %></h5>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
