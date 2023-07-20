@@ -30,6 +30,7 @@ gem "jbuilder"
 # Manually added gems
 gem "devise"
 gem "pundit"
+gem "cloudinary"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
