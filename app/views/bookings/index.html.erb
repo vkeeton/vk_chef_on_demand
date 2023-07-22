@@ -1,0 +1,7 @@
+<ul class="list-group">
+<% @bookings.each do |booking| %>
+  <li class="list-group-item">
+    <%= booking.offer_id %> | <%= booking.service_date %>
+  </li>
+<% end %>
+</ul>
