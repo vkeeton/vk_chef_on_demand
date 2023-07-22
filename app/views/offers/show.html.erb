@@ -1,1 +1,16 @@
-<h1>Welcome to <%= @offer.cuisine %> page</h1>
+<h1><%= @offer.cuisine %> Offer Details</h1>
+
+<div class="container">
+  <div class="row my-3">
+    <div class="col-12 my-3">
+      <div class="card">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://source.unsplash.com/random/500x500/?cuisine')">
+          <h1 class="text-center text-light"><%= @offer.cuisine %> Offer Details</h1>
+        </div>
+      </div>
+      <div class="row my-3">
+      <p class="text-center text-dark">Price: ¥<%= @offer.price %></p>
+      <%= link_to "Book Now", new_offer_booking_path(offer_id: @offer.id), class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
