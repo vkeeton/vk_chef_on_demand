@@ -10,7 +10,7 @@
       </div>
       <div class="row my-3">
       <p class="text-center text-dark">Price: ¥<%= @offer.price %></p>
-      <button type="button" class="btn btn-primary">Book Now</button>
+      <%= link_to "Book Now", new_offer_booking_path(offer_id: @offer.id), class: "btn btn-primary" %>
     </div>
   </div>
 </div>
