@@ -1,5 +1,17 @@
 <h1>All Offers</h1>
 
-<% @offers.each do |offer| %>
-  <p><%= offer.cuisine %>: <%= offer.price %></p>
-<% end %>
+<div class="container">
+  <div class="row my-3">
+    <% @offers.each do |offer| %>
+      <div class="col-3 my-3">
+        <div class="card">
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGZvb2R8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60)">
+            <h2 class="text-center text-light"><%= offer.cuisine %></h2>
+            <p class="text-center text-dark">¥<%= offer.price %></p>
+          </div>
+          <%= link_to "Find out more", offer_path(offer), class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
