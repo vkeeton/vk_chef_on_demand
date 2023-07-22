@@ -11,17 +11,19 @@ Offer.destroy_all
 User.destroy_all
 
 # Create Users (Chefs)
-chef1 = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.unique.safe_email, user_type: "chef")
-chef2 = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.unique.safe_email, user_type: "chef")
-chef3 = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.unique.safe_email, user_type: "chef")
-chef4 = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.unique.safe_email, user_type: "chef")
-chef5 = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.unique.safe_email, user_type: "chef")
-chef6 = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.unique.safe_email, user_type: "chef")
+chef1 = User.create!(email: Faker::Internet.unique.safe_email, password: "123456")
+chef2 = User.create!(email: Faker::Internet.unique.safe_email, password: "123456")
+chef3 = User.create!(email: Faker::Internet.unique.safe_email, password: "123456")
+chef4 = User.create!(email: Faker::Internet.unique.safe_email, password: "123456")
+chef5 = User.create!(email: Faker::Internet.unique.safe_email, password: "123456")
+chef6 = User.create!(email: Faker::Internet.unique.safe_email, password: "123456")
+puts "created #{chef1.id}"
 
 # Create Offers for each Chef
-offer1 = Offer.create(cuisine: "Japanese", price: 1000, user_id: chef1.id)
-offer2 = Offer.create(cuisine: "Chinese", price: 2000, user_id: chef2.id)
-offer3 = Offer.create(cuisine: "French", price: 1500, user_id: chef3.id)
-offer4 = Offer.create(cuisine: "American", price: 2500, user_id: chef4.id)
-offer5 = Offer.create(cuisine: "Korean", price: 3000, user_id: chef5.id)
-offer6 = Offer.create(cuisine: "Italian", price: 3500, user_id: chef6.id)
+offer1 = Offer.create!(cuisine: "Japanese", price: 1000, user_id: chef1.id)
+offer2 = Offer.create!(cuisine: "Chinese", price: 2000, user_id: chef2.id)
+offer3 = Offer.create!(cuisine: "French", price: 1500, user_id: chef3.id)
+offer4 = Offer.create!(cuisine: "American", price: 2500, user_id: chef4.id)
+offer5 = Offer.create!(cuisine: "Korean", price: 3000, user_id: chef5.id)
+offer6 = Offer.create!(cuisine: "Italian", price: 3500, user_id: chef6.id)
+puts "created #{offer1.id}"
