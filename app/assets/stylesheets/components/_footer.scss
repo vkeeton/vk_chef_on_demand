@@ -1,0 +1,26 @@
+.footer {
+  background: #E2DCDB;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  padding: 0px 14px;
+  color: #454342;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+
+  a {
+    color: #454342;
+    // opacity: 0.15;
+    text-decoration: none;
+    font-size: 24px;
+    padding: 0px 10px;
+  }
+  a:hover {
+    // opacity: 1;
+    color: #2a2928;
+  }
+}
