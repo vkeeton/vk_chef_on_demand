@@ -1,5 +1,8 @@
 <h1>Add an offer to your bookings</h1>
 <%= simple_form_for [@offer, @booking] do |f| %>
-  <%= f.input :comment, placeholder: 'Enter a comment about the movie' %>
+  <%= f.input :service_date, placeholder: 'Enter a date' %>
+  <%= f.input :meals_quantity, placeholder: 'Enter a number' %>
+  <%= f.input :user_comment, placeholder: 'Enter your comment' %>
+  <%= f.input :cook_at_home, placeholder: 'Choose yes or not' %>
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
