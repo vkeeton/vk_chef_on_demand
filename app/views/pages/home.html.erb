@@ -1,2 +1,23 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1599297914860-1ccd36987a52?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjg3fHxjb29raW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60);">
+  <div class="container">
+    <h1 class="my-2">Tired of ordering takeout?</h1>
+    <h2 class="">Book a personal chef today</h2>
+    <a class="btn btn-primary" href="#">Book now</a>
+  </div>
+</div>
+
+<% cuisines = ["Japanese", "Chinese", "French", "American", "Italian", "Korean"] %>
+
+<div class="container">
+  <div class="row my-3">
+  <% cuisines.each do |cuisine| %>
+    <div class="col-3 my-3">
+      <div class="card">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGZvb2R8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60)"><%= cuisine %></div>
+          <%= link_to "", "/offers", class: "card-link" %>
+        </div>
+      </div>
+  <% end %>
+  </div>
+</div>
