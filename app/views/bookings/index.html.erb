@@ -1,7 +1,15 @@
 <ul class="list-group">
 <% @bookings.each do |booking| %>
   <li class="list-group-item">
-    <%= booking.offer_id %> | <%= booking.service_date %>
+    <div class="d-flex justify-content-between">
+      <div>
+        Cuisine selection: <%= booking.offer.cuisine %> | Date of service: <%= booking.service_date %>
+      </div>
+      <div>
+        Chef Approval Pending
+      </div>
+    </div>
   </li>
 <% end %>
 </ul>
+<%= link_to "Back to Home", root_path, class: "btn btn-primary my-3"%>
