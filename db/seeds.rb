@@ -7,23 +7,81 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # Destroy all existing Users and Offers
+Booking.destroy_all
 Offer.destroy_all
 User.destroy_all
 
-# Create Users (Chefs)
-chef1 = User.create!(email: Faker::Internet.unique.safe_email, password: "123456")
-chef2 = User.create!(email: Faker::Internet.unique.safe_email, password: "123456")
-chef3 = User.create!(email: Faker::Internet.unique.safe_email, password: "123456")
-chef4 = User.create!(email: Faker::Internet.unique.safe_email, password: "123456")
-chef5 = User.create!(email: Faker::Internet.unique.safe_email, password: "123456")
-chef6 = User.create!(email: Faker::Internet.unique.safe_email, password: "123456")
-puts "created #{chef1.id}"
+# Need to make 6 Cuisines for homepage
+# Is this OK to keep hardcoded as is?
+# How to make
 
-# Create Offers for each Chef
-offer1 = Offer.create!(cuisine: "Japanese", price: 1000, user_id: chef1.id)
-offer2 = Offer.create!(cuisine: "Chinese", price: 2000, user_id: chef2.id)
-offer3 = Offer.create!(cuisine: "French", price: 1500, user_id: chef3.id)
-offer4 = Offer.create!(cuisine: "American", price: 2500, user_id: chef4.id)
-offer5 = Offer.create!(cuisine: "Korean", price: 3000, user_id: chef5.id)
-offer6 = Offer.create!(cuisine: "Italian", price: 3500, user_id: chef6.id)
-puts "created #{offer1.id}"
+# Each Cuisine needs to have 3 chefs
+
+# Each Offer is linked to a Chef
+
+# Create Users (Chefs)
+
+6.times do
+  chef = User.create(
+    email: Faker::Internet.unique.safe_email,
+    password: "123456",
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    user_type: "chef"
+    )
+end
+
+3.times do
+  offer = Offer.create(
+    cuisine: "Japanese",
+    price: rand(1000...9000),
+    # this line assigns a random user who is a chef to an offer
+    user_id: User.where(user_type: "chef").sample.id
+    )
+end
+puts "Japanese offers created"
+
+3.times do
+  offer = Offer.create(
+    cuisine: "Chinese",
+    price: rand(1000...9000),
+    # this line assigns a random user who is a chef to an offer
+    user_id: User.where(user_type: "chef").sample.id
+    )
+end
+
+3.times do
+  offer = Offer.create(
+    cuisine: "French",
+    price: rand(1000...9000),
+    # this line assigns a random user who is a chef to an offer
+    user_id: User.where(user_type: "chef").sample.id
+    )
+end
+
+3.times do
+  offer = Offer.create(
+    cuisine: "American",
+    price: rand(1000...9000),
+    # this line assigns a random user who is a chef to an offer
+    user_id: User.where(user_type: "chef").sample.id
+    )
+end
+
+3.times do
+  offer = Offer.create(
+    cuisine: "Korean",
+    price: rand(1000...9000),
+    # this line assigns a random user who is a chef to an offer
+    user_id: User.where(user_type: "chef").sample.id
+    )
+end
+
+3.times do
+  offer = Offer.create(
+    cuisine: "Italian",
+    price: rand(1000...9000),
+    # this line assigns a random user who is a chef to an offer
+    user_id: User.where(user_type: "chef").sample.id
+    )
+end
