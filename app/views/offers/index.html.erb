@@ -1,19 +1,18 @@
 <h1>All Offers</h1>
 
-<% chefs = ["Morihito", "Suzuki", "Tanaka", "Son", "Toyata", "Honda"] %>
-<% price = ["¥", "¥¥", "¥¥¥"] %>
+<!-- <% chefs = ["Morihito", "Suzuki", "Tanaka", "Son", "Toyata", "Honda"] %>
+<% price = ["¥", "¥¥", "¥¥¥"] %> -->
 
 
 
 <div class="container">
   <div class="row my-3">
-    <%# <% chefs.each_with_index do |chef, index| %>
     <% @offers.each do |offer| %>
       <div class="col-3 my-3">
         <div class="card">
           <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://source.unsplash.com/random/500x500/?cuisine&')">
             <div class="text-center">
-              <h2 class="text-center text-light"><%= offer.user.last_name %></h2>
+                  <h2 class="text-center text-light"><%= offer.user.last_name %></h2>
               <p class="text-center text-dark">¥<%= offer.price %></p>
             </div>
           </div>

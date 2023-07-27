@@ -31,11 +31,10 @@ class BookingsController < ApplicationController
     redirect_to bookings_path, status: :see_other
   end
 
-  # def show
-  #   # skip_authorization
-  #   @booking = Booking.find(params[:id])
-  #   authorize @booking
-  # end
+  def show
+    @booking = Booking.find(params[:id])
+    authorize @booking
+  end
 end
 
 private

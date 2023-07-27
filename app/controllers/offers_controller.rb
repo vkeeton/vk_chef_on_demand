@@ -1,6 +1,10 @@
 class OffersController < ApplicationController
   def index
-    @offers = policy_scope(Offer)
+    if params[:cuisine]
+      @offers = policy_scope(Offer).where(cuisine: params[:cuisine])
+    else
+      @offers = policy_scope(Offer).all
+    end
   end
 
   def show
