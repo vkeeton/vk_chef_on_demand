@@ -1,15 +1,14 @@
 class BookingsController < ApplicationController
-  skip_before_action :verify_authenticity_token
-  before_action :set_offer, only: [:new, :create, :destroy]
+  before_action :set_offer, only: [:new, :create]
 
   def index
     @bookings = policy_scope(Booking)
   end
 
   def new
+    authorize @offer
     @booking = Booking.new
     authorize @booking
-    authorize @offer
   end
 
   def create
@@ -24,21 +23,20 @@ class BookingsController < ApplicationController
     authorize @booking
     authorize @offer
   end
-end
 
-def destroy
-  raise
-  @booking = Booking.find(params[:id])
-  @booking.destroy!
-  authorize @booking
-  redirect_to bookings_path, status: :see_other
-end
+  def destroy
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.destroy!
+    redirect_to bookings_path, status: :see_other
+  end
 
-# def show
-#   # skip_authorization
-#   @booking = Booking.find(params[:id])
-#   authorize @booking
-# end
+  # def show
+  #   # skip_authorization
+  #   @booking = Booking.find(params[:id])
+  #   authorize @booking
+  # end
+end
 
 private
 

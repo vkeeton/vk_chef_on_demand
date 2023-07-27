@@ -7,7 +7,8 @@
       </div>
       <div>
         Chef Approval Pending
-        <%= button_to "delete booking", booking_path(booking), data: { turbo_method: :delete } %>
+        <%= booking.id %>
+        <%= button_to "delete booking", booking_path(booking.id), method: 'delete' %>
       </div>
     </div>
   </li>
