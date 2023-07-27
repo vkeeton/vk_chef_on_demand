@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    @offer = Offer.all
+    @offers = Offer.select('DISTINCT ON (cuisine) *')
   end
 end
