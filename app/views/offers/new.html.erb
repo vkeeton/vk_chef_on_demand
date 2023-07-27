@@ -1,1 +1,8 @@
-<%= f.input :photo, as: :file %>
+<h1>Create a new offer</h1>
+<%= simple_form_for [@offer] do |f| %>
+  <%= f.input :cuisine, placeholder: 'Enter the cuisine you are good at' %>
+  <%= f.input :price, placeholder: 'Enter the price for the cuisine' %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+  <%# <%= f.hidden_field :user.last_name, value: current_user.last_name %>
+<% end %>
