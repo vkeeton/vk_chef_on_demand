@@ -18,13 +18,13 @@
 
 <div class="container">
   <div class="row my-3">
-  <% cuisines_with_images.each do |cuisine, image_url| %>
+  <% @offers.each do |offer| %>
     <div class="col-3 my-3">
       <div class="card">
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_url %>')">
-          <h4><%= cuisine %></h4>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cuisines_with_images[offer.cuisine] %>')">
+          <h4><%= offer.cuisine %></h4>
         </div>
-        <%= link_to "", "/offers", class: "card-link" %>
+        <%= link_to "", offers_path(cuisine: offer.cuisine), class: "card-link" %>
       </div>
     </div>
   <% end %>
