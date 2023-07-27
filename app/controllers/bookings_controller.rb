@@ -1,17 +1,17 @@
 class BookingsController < ApplicationController
+  before_action :set_offer, only: [:new, :create]
+
   def index
     @bookings = policy_scope(Booking)
   end
 
   def new
-    @offer = Offer.find(params[:offer_id])
+    authorize @offer
     @booking = Booking.new
     authorize @booking
-    authorize @offer
   end
 
   def create
-    @offer = Offer.find(params[:offer_id])
     @booking = Booking.new(booking_params)
     @booking.offer = @offer
     @booking.user = current_user
@@ -23,9 +23,26 @@ class BookingsController < ApplicationController
     authorize @booking
     authorize @offer
   end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.destroy!
+    redirect_to bookings_path, status: :see_other
+  end
+
+  # def show
+  #   # skip_authorization
+  #   @booking = Booking.find(params[:id])
+  #   authorize @booking
+  # end
 end
 
 private
+
+def set_offer
+  @offer = Offer.find(params[:offer_id])
+end
 
 def booking_params
   params.require(:booking).permit(:offer_id, :user_id, :service_date, :meals_quantity, :user_comment, :cook_at_home)
