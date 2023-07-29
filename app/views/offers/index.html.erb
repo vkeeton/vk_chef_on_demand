@@ -10,12 +10,17 @@
     <% @offers.each do |offer| %>
       <div class="col-3 my-3">
         <div class="card">
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://source.unsplash.com/random/500x500/?cuisine&')">
-            <div class="text-center">
-                  <h2 class="text-center text-light"><%= offer.user.last_name %></h2>
-              <p class="text-center text-dark">¥<%= offer.price %></p>
+          <% if offer.photo.attached? %>
+          <!-- show cloudinary image-->
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%=  url_for(offer.photo) %>')">
+          <% else %>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%="https://source.unsplash.com/random/500x500/?#{offer.cuisine},food&"%>)">
+              <div class="text-center">
+                <h2 class="text-center text-light"><%= offer.user.last_name %></h2>
+                <p class="text-center text-dark">¥<%= offer.price %></p>
+              </div>
             </div>
-          </div>
+          <% end %>
           <%= link_to "Find out more", offer_path(offer), class: "btn btn-primary" %>
         </div>
       </div>
