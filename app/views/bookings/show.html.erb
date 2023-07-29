@@ -1,3 +1,62 @@
-<h1>show page!</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://source.unsplash.com/random/500x500/?cuisine')">
+  <%= link_to bookings_path, class: 'nav-btn my-2 fa-lg' do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
+  <div class="container">
+    <h1>Culinary Experience by <%= @booking.offer.user.first_name %></h1>
+  </div>
+</div>
 
-<% @booking.id %>
+<div class="container">
+  <div class="order-info my-3 pb-4 border-bottom">
+    <p> Date Ordered: <%= @booking.created_at %> | Service Date: <%= @booking.service_date %></p>
+    <%= button_to "delete booking", booking_path(@booking.id), method: 'delete', data: { confirm: 'Are you sure?' } %>
+
+<%# the below code would in theory make the delete link an icon - however link-to is not working only button-to is %>
+<%# <%= button_to booking_path(@booking.id), method: 'delete', class: ' my-2 fa-lg px-2' do %>
+      <%# <i class="fa-regular fa-circle-xmark"></i><% end %>
+  </div>
+
+  <div class="order-details">
+    <h1>Order Details</h1>
+    <div class="flex-row d-flex justify-content-between">
+      <div class="col">
+        <p>Price</p>
+      </div>
+      <div class="col">
+        <p>¥<%= @booking.offer.price %></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <p>Number of Meals</p>
+      </div>
+      <div class="col">
+        <p><%= @booking.meals_quantity %></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <p>Is the meal being cooked in your home?</p>
+      </div>
+      <div class="col">
+        <% if @booking.cook_at_home %>
+          <p>Yes!</p>
+        <% else %>
+          <p>Meal is being delivered!</p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+    <div class="col">
+      <p>Your order comments</p>
+    </div>
+    <div class="col">
+      <p><%= @booking.user_comment %></p>
+    </div>
+    </div>
+  </div>
+</div>

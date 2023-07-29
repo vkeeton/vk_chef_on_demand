@@ -15,7 +15,9 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.offer = @offer
     @booking.user = current_user
-    if @booking.save
+    if @offer.user == current_user
+      redirect_to offer_path(@offer), alert: "You can't book your own offer"
+    elsif @booking.save
       redirect_to bookings_path
     else
       render :new
