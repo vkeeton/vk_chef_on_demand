@@ -1,10 +1,3 @@
-<h1>All Offers</h1>
-
-<!-- <% chefs = ["Morihito", "Suzuki", "Tanaka", "Son", "Toyata", "Honda"] %>
-<% price = ["¥", "¥¥", "¥¥¥"] %> -->
-
-
-
 <div class="container">
   <div class="row my-3">
     <% @offers.each do |offer| %>
@@ -14,17 +7,18 @@
           <!-- show cloudinary image-->
           <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%=  url_for(offer.photo) %>')">
           <% else %>
-            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%="https://source.unsplash.com/random/500x500/?#{offer.cuisine},food&"%>)">
+            <div class="card-category offer-link" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url(<%="https://source.unsplash.com/random/500x500/?#{offer.cuisine},food&"%>)">
               <div class="text-center">
-                <h2 class="text-center text-light"><%= offer.user.last_name %></h2>
-                <p class="text-center text-dark">¥<%= offer.price %></p>
+                <h2 class="text-center text-light">Chef <%= offer.user.last_name %></h2>
+                <p class="text-center text-light">¥<%= offer.price %></p>
+                <%= link_to "Book Your Meal!", offer_path(offer), class: 'text-center btn' %>
               </div>
             </div>
           <% end %>
-          <%= link_to "Find out more", offer_path(offer), class: "btn btn-primary" %>
+          <%# <%= link_to "Find out more", offer_path(offer), class: "btn btn-primary" %>
         </div>
       </div>
     <% end %>
   </div>
-  <%= link_to "Create a new offer", new_offer_path, class: "btn btn-primary" %>
+  <%# <%= link_to "Create a new offer", new_offer_path, class: "btn btn-primary" %>
 </div>
