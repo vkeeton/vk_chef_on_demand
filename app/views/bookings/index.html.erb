@@ -12,33 +12,34 @@
         <div class="card-product-infos">
           <h2> <%= booking.offer.cuisine %> | <%= booking.offer.user.first_name %></h2>
           <p> <%= booking.service_date %> </p>
-          <%#= link_to "", "/bookings/#{booking.id}", class: "card-link" %>
+          <%= link_to "/bookings/#{booking.id}", class: 'link my-2 fa-lg' do %>
+            <i class="fa-solid fa-arrow-right"></i>
+          <% end %>
+          <%#= link_to "", , class: "card-link" %>
           <% if booking.status == nil %>
             <p> Chef Approval Pending </p>
           <% end %>
-           <h2> <%= booking.offer.cuisine %> | <%= booking.offer.user.first_name %></h2>
-           <p> <%= booking.service_date %> </p>
-          <%#= link_to "", "/bookings/#{booking.id}", class: "card-link" %>
           <div>
             <% if booking.pending? %>
+              <% if current_user.user_type == "chef" %>
               <%# <%= link_to "Accept", booking_path(booking, status: true), method: :patch, class: "btn btn-success mr-2" %>
               <%# <%= link_to "Deny", booking_path(booking, status: false), method: :patch, class: "btn btn-danger mr-2" %>
-              <div class="d-flex justify-content-between">
-              <%= simple_form_for booking do |f| %>
-                <%= f.input :status, as: :hidden, input_html: { value: true} %>
-                <%= f.submit 'Accept', class: 'btn btn-success mr-2' %>
+                <div class="d-flex justify-content-between">
+                  <%= simple_form_for booking do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: true} %>
+                    <%= f.submit 'Accept', class: 'btn btn-success mr-2' %>
+                  <% end %>
+                  <%= simple_form_for booking do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: false} %>
+                    <%= f.submit 'Reject', class: 'btn btn-danger mr-2' %>
+                  <% end %>
+                </div>
               <% end %>
-              <%= simple_form_for booking do |f| %>
-                <%= f.input :status, as: :hidden, input_html: { value: false} %>
-                <%= f.submit 'Reject', class: 'btn btn-danger mr-2' %>
-              <% end %>
-             </div>
             <% elsif booking.accepted? %>
-              Chef Approved <%= booking.id %>
+              <p><strong>Chef Approved</strong></p>
             <% elsif booking.denied? %>
-              Chef Denied <%= booking.id %>
+              <p><strong>Chef Denied</strong></p>
             <% end %>
-            <%# <%= button_to "Delete booking", booking_path(booking.id), method: :delete, class: "btn btn-secondary" %>
           </div>
         </div>
       </div>
@@ -46,13 +47,4 @@
     <% end %>
 
   </div>
-        <%# <li class="list-group-item">
-            <div>
-              Cuisine selection: <%= booking.offer.cuisine %>
-            <%# </div>
-            <div>
-              Chef Approval Pending
-              <%= booking.id %>
-              <%# <%= button_to "delete booking", booking_path(booking.id), method: 'delete' %>
 </div>
-<%= link_to "Back to Home", root_path, class: "btn btn-primary my-3"%>
