@@ -9,4 +9,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :bookings, only: %i[destroy index show update]
   # resources :bookings
+  namespace :chefs do
+    resources :bookings, only: %i[index]
+  end
+  # resources :chefs
 end

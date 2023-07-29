@@ -37,14 +37,14 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     authorize @booking
   end
-end
 
-private
+  private
 
-def set_offer
-  @offer = Offer.find(params[:offer_id])
-end
+  def set_offer
+    @offer = Offer.find(params[:offer_id])
+  end
 
-def booking_params
-  params.require(:booking).permit(:offer_id, :user_id, :service_date, :meals_quantity, :user_comment, :cook_at_home)
+  def booking_params
+    params.require(:booking).permit(:offer_id, :user_id, :service_date, :meals_quantity, :user_comment, :cook_at_home)
+  end
 end
