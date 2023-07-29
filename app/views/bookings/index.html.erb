@@ -1,17 +1,33 @@
-<ul class="list-group">
-<% @bookings.each do |booking| %>
-  <li class="list-group-item">
-    <div class="d-flex justify-content-between">
-      <div>
-        Cuisine selection: <%= booking.offer.cuisine %> | Date of service: <%= booking.service_date %>
-      </div>
-      <div>
-        Chef Approval Pending
-        <%= booking.id %>
-        <%= button_to "delete booking", booking_path(booking.id), method: 'delete' %>
+<div class="container">
+  <div class="row">
+    <%= link_to root_path, class: 'nav-btn my-2 fa-lg' do %>
+      <i class="fa-solid fa-arrow-left"></i>
+    <% end %>
+    <h1>Your Meals</h1>
+
+    <% @bookings.each do |booking| %>
+    <div class="col-4 my-3">
+      <div class="card-product">
+        <img src="https://source.unsplash.com/random/500x500/?cuisine" />
+        <div class="card-product-infos">
+          <h2> <%= booking.offer.cuisine %> | <%= booking.offer.user.first_name %></h2>
+          <p> <%= booking.service_date %> </p>
+          <%= link_to "", "/bookings/#{booking.id}", class: "card-link" %>
+          <% if booking.status == nil %>
+            <p> Chef Approval Pending </p>
+          <% end %>
+        </div>
       </div>
     </div>
-  </li>
-<% end %>
-</ul>
-<%= link_to "Back to Home", root_path, class: "btn btn-primary my-3"%>
+    <% end %>
+
+  </div>
+        <%# <li class="list-group-item">
+            <div>
+              Cuisine selection: <%= booking.offer.cuisine %>
+            <%# </div>
+            <div>
+              Chef Approval Pending
+              <%= booking.id %>
+              <%# <%= button_to "delete booking", booking_path(booking.id), method: 'delete' %>
+</div>
