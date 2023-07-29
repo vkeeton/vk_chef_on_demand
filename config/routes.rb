@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :bookings, only: %i[destroy index show update]
   # resources :bookings
   namespace :chefs do
-    resources :bookings, only: %i[index]
+    resources :bookings, only: %i[index update]
   end
   # resources :chefs
 end

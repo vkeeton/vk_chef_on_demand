@@ -1,32 +1,46 @@
 <div class="container">
   <div class="row">
+    <%= link_to root_path, class: 'nav-btn my-2 fa-lg' do %>
+      <i class="fa-solid fa-arrow-left"></i>
+    <% end %>
     <h1>Your Bookings</h1>
+
     <% @bookings.each do |booking| %>
-    <div class="col-8 my-3 ">
+    <div class="col-4 my-3">
       <div class="card-product">
-        <li class="list-group-item">
-        <div class="d-flex justify-content-between">
-        <div>
+        <img src="https://source.unsplash.com/random/500x500/?cuisine" />
+        <div class="card-product-infos">
+          <h2> <%= booking.offer.cuisine %> | <%= booking.offer.user.first_name %></h2>
+          <p> <%= booking.service_date %> </p>
+          <% if booking.status == nil %>
+            <p> Chef Approval Pending </p>
+          <% end %>
           <div>
-            Cuisine selection: <%= booking.offer.cuisine %>
+            <% if booking.pending? %>
+              <% if current_user.user_type == "chef" %>
+              <%# <%= link_to "Accept", booking_path(booking, status: true), method: :patch, class: "btn btn-success mr-2" %>
+              <%# <%= link_to "Deny", booking_path(booking, status: false), method: :patch, class: "btn btn-danger mr-2" %>
+                <div class="d-flex justify-content-between">
+                  <%= simple_form_for booking do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: true} %>
+                    <%= f.submit 'Accept', class: 'btn btn-success mr-2' %>
+                  <% end %>
+                  <%= simple_form_for booking do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: false} %>
+                    <%= f.submit 'Reject', class: 'btn btn-danger mr-2' %>
+                  <% end %>
+                </div>
+              <% end %>
+            <% elsif booking.accepted? %>
+              <p><strong>Chef Approved</strong></p>
+            <% elsif booking.denied? %>
+              <p><strong>Chef Denied</strong></p>
+            <% end %>
           </div>
-          <div>
-            Date of service: <%= booking.service_date %>
-          </div>
-          <div>
-            Cuisine selection: <%= booking.offer.cuisine %>
-          </div>
-          </div>
-          <div>
-            Your Approval Status:
-            <%= booking.status ? "Approved" : "Pending" %>
-          </div>
+        </div>
       </div>
     </div>
-    </li>
     <% end %>
-    <%= link_to "Back to Home", root_path, class: "btn btn-primary my-3"%>
+
   </div>
-
-
 </div>
