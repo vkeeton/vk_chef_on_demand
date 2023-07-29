@@ -14,20 +14,22 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
-    <%= render "shared/flashes" %>
+    <div class="body">
+      <%= render "shared/navbar" %>
+      <%= render "shared/flashes" %>
 
-    <!-- Handles alert if chef tried to book their own offer -->
-    <% if flash[:alert] %>
-      <script type="text/javascript">
-        alert("<%= flash[:alert] %>")
-    </script>
-    <% end %>
+      <!-- Handles alert if chef tried to book their own offer -->
+      <% if flash[:alert] %>
+        <script type="text/javascript">
+          alert("<%= flash[:alert] %>")
+      </script>
+      <% end %>
 
-    <%# <% if user_signed_in? %>
-      <%# <h2><%= current_user.email %>
-    <%# <% end %>
-    <%= yield %>
-    <%= render "shared/footer" %>
+      <%# <% if user_signed_in? %>
+        <%# <h2><%= current_user.email %>
+      <%# <% end %>
+      <%= yield %>
+      <%= render "shared/footer" %>
+    </div>
   </body>
 </html>
