@@ -9,8 +9,10 @@
 
 <div class="container">
   <div class="order-info my-3 pb-4 border-bottom">
-    <p> Date Ordered: <%= @booking.created_at %> | Service Date: <%= @booking.service_date %></p>
+    <p> Date Ordered: <%= @booking.created_at.strftime('%B %d') %> | Service Date: <%= @booking.service_date.strftime('%B %d') %></p>
+    <% if @booking.service_date.future? %>
     <%= button_to "delete booking", booking_path(@booking.id), method: 'delete', data: { confirm: 'Are you sure?' } %>
+    <% end %>
 
 <%# the below code would in theory make the delete link an icon - however link-to is not working only button-to is %>
 <%# <%= button_to booking_path(@booking.id), method: 'delete', class: ' my-2 fa-lg px-2' do %>
@@ -24,7 +26,7 @@
         <p>Price</p>
       </div>
       <div class="col">
-        <p>¥<%= @booking.offer.price %></p>
+        <p>¥<%= @booking.offer.price * @booking.meals_quantity %></p>
       </div>
     </div>
 
