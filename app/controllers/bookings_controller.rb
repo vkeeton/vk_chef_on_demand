@@ -43,8 +43,9 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.update(booking_params)
 
-    redirect_to bookings_path
+    redirect_to chefs_bookings_path
   end
+
 end
 
   private
