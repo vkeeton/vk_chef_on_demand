@@ -1,7 +1,8 @@
 class Chefs::BookingsController < ApplicationController
 
   def index
-    policy_scope([:chefs, Booking])
+    @bookings = current_user.bookings_as_chef
+    policy_scope(Booking)
     # authorize([:chef, @booking])
   end
 end
