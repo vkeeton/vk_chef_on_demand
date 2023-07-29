@@ -9,9 +9,6 @@
           <%= link_to "Book Now", new_offer_booking_path(offer_id: @offer.id), class: "btn btn-primary" %>
       </div>
       <div class="row my-3">
-      <p class="text-center text-dark">Price: ¥<%= @offer.price %></p>
-      #if offer.user_id = current_user, hide the button below
-      <%= link_to "Book Now", new_offer_booking_path(offer_id: @offer.id), class: "btn btn-primary" %>
     </div>
   </div>
 </div>
